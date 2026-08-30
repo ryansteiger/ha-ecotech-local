@@ -1,20 +1,89 @@
 {
-  "title": "EcoTech Local (Research Preview)",
   "config": {
     "step": {
-      "user": {"title": "Choose a local EcoTech connection", "description": "This preview verifies local visibility only. Undocumented control commands are intentionally disabled.", "data": {"connection_type": "Connection type"}},
-      "bluetooth": {"title": "Add a Mobius / QuietDrive Bluetooth device", "description": "Enter the Bluetooth address shown in Home Assistant.", "data": {"address": "Bluetooth address"}},
-      "reeflink": {"title": "Add ReefLink", "description": "Enter the ReefLink local IP address. This checks reachability only.", "data": {"host": "ReefLink IP address"}},
-      "bluetooth_confirm": {"title": "Add {name}", "description": "Add this Bluetooth device for local visibility diagnostics?"}
+      "bluetooth_confirm": {
+        "description": "Do you want to set up {name}?"
+      },
+      "tank_confirm": {
+        "description": "Found {count} devices on this tank:\n\n{devices}",
+        "data": {
+          "name": "Name"
+        }
+      },
+      "user": {
+        "data": {
+          "address": "Device"
+        }
+      }
     },
-    "error": {"invalid_address": "Enter a valid Bluetooth address", "invalid_host": "Enter a valid IP address"},
-    "abort": {"already_configured": "This device is already configured"}
+    "abort": {
+      "no_devices_found": "No unconfigured Mobius devices found.",
+      "already_configured": "Device is already configured",
+      "merged_into_tank": "This device was automatically added to a tank you already have configured -- no further action needed.",
+      "no_manufacturer_data": "This device's Bluetooth advertisement didn't include its serial number yet, which is needed to set it up reliably. This is normal and temporary -- Home Assistant will detect it again automatically within a few seconds once a fuller advertisement comes in, with no action needed from you. If it keeps happening, try moving the device closer or power-cycling it."
+    }
   },
   "entity": {
-    "binary_sensor": {"reachable": {"name": "Reachable"}},
-    "sensor": {"signal_strength": {"name": "Signal strength"}, "connection_status": {"name": "Connection status"}},
-    "fan": {"pump": {"name": "Pump control (locked)"}},
-    "light": {"radion": {"name": "Radion control (locked)"}},
-    "button": {"feed_mode": {"name": "Feed mode (locked)"}}
+    "sensor": {
+      "support": {
+        "name": "Support tier"
+      },
+      "error_state": {
+        "name": "Error state"
+      },
+      "operation_state": {
+        "name": "Operation state"
+      },
+      "motor_speed": {
+        "name": "Motor speed"
+      },
+      "flow_rate": {
+        "name": "Estimated flow"
+      },
+      "schedule_point_count": {
+        "name": "Schedule points"
+      },
+      "current_pump_mode": {
+        "name": "Current mode"
+      },
+      "channel_intensity": {
+        "name": "{channel} intensity"
+      },
+      "calibration": {
+        "name": "Calibration"
+      },
+      "local_control_enabled": {
+        "name": "Local control"
+      },
+      "auto_dim_timeout": {
+        "name": "LED auto-dim timeout"
+      },
+      "max_fan_speed": {
+        "name": "Max fan speed"
+      },
+      "fan_shutdown_enabled": {
+        "name": "Fan shutdown"
+      },
+      "firmware_version": {
+        "name": "Firmware version"
+      },
+      "hardware_revision": {
+        "name": "Hardware revision"
+      },
+      "mesh_address": {
+        "name": "Mesh address"
+      },
+      "mesh_prefix": {
+        "name": "Mesh prefix"
+      },
+      "gateway_device": {
+        "name": "Gateway device"
+      }
+    },
+    "button": {
+      "reboot": {
+        "name": "Reboot"
+      }
+    }
   }
 }
