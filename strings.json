@@ -1,0 +1,35 @@
+{
+  "title": "EcoTech Local (Research Preview)",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Choose a local EcoTech connection",
+        "description": "This preview verifies local visibility only. Undocumented control commands are intentionally disabled.",
+        "data": {"connection_type": "Connection type"}
+      },
+      "bluetooth": {
+        "title": "Add a Mobius / QuietDrive Bluetooth device",
+        "description": "Enter the Bluetooth address shown in Home Assistant. Device support varies by controller radio module and firmware.",
+        "data": {"address": "Bluetooth address"}
+      },
+      "reeflink": {
+        "title": "Add ReefLink",
+        "description": "Enter the ReefLink local IP address. This checks reachability; the local command protocol is not publicly documented.",
+        "data": {"host": "ReefLink IP address"}
+      },
+      "bluetooth_confirm": {
+        "title": "Add {name}",
+        "description": "Add this Bluetooth device for local visibility diagnostics?"
+      }
+    },
+    "error": {"invalid_address": "Enter a valid Bluetooth address", "invalid_host": "Enter a valid IP address"},
+    "abort": {"already_configured": "This device is already configured"}
+  },
+  "entity": {
+    "binary_sensor": {"reachable": {"name": "Reachable"}},
+    "sensor": {"signal_strength": {"name": "Signal strength"}, "connection_status": {"name": "Connection status"}},
+    "fan": {"pump": {"name": "Pump control (locked)"}},
+    "light": {"radion": {"name": "Radion control (locked)"}},
+    "button": {"feed_mode": {"name": "Feed mode (locked)"}}
+  }
+}
