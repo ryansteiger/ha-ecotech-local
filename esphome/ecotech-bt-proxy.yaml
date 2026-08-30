@@ -1,0 +1,43 @@
+# Board: ESP32-S3 DevKitC-1 N16R8 — EcoTech Local BT proxy
+# Adapted from ha-mobius esphome/mobius-bt-proxy.yaml
+# This proxy MUST be active: true — integration needs GATT connections, not just advertisement forwarding.
+
+esphome:
+  name: bt-aquarium
+  friendly_name: EcoTech BT Aquarium
+
+esp32:
+  variant: esp32s3
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+    
+psram:
+  mode: octal
+  
+logger:
+
+api:
+
+ota:
+  - platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+esp32_ble:
+  use_psram: true
+  
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+
+bluetooth_proxy:
+  active: true
+
+button:
+  - platform: restart
+    name: "BT Proxy Restart"
+    icon: "mdi:restart"
+    entity_category: diagnostic
