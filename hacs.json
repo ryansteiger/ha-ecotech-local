@@ -1,5 +1,6 @@
 {
-  "name": "EcoTech Local (Research Preview)",
+  "name": "EcoTech Local",
   "render_readme": true,
-  "homeassistant": "2025.1.0"
+  "zip_release": false,
+  "homeassistant": "2026.7.0"
 }
