@@ -18,5 +18,8 @@ jobs:
           from pathlib import Path
           for path in Path('.').rglob('*.json'):
               json.loads(path.read_text())
-              print(path)
+              print(f"OK {path}")
           PY
+      - name: Check manifest requirements
+        run: |
+          python -c "import json; m=json.load(open('custom_components/ecotech_local/manifest.json')); assert 'python-mobius' in str(m['requirements']), 'missing python-mobius'; print('manifest OK', m['requirements'])"
